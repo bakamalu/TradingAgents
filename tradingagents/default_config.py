@@ -161,7 +161,10 @@ def build_default_config() -> dict:
             # Statements come from SEC EDGAR as filed (US filers), then Yahoo; the
         # overview and insider tools, which SEC EDGAR does not serve, from Yahoo.
         "fundamental_data": "sec_edgar,yfinance",  # Options: sec_edgar, alpha_vantage, yfinance
-            "news_data": "yfinance",             # Options: alpha_vantage, yfinance
+            # 同花顺 7x24 快讯 serves Chinese-language A-share news and stands
+            # aside (NoMarketDataError) for every other listing, so it leads the
+            # chain at no cost to US/HK symbols, which fall through to Yahoo.
+            "news_data": "ths_news,yfinance",    # Options: ths_news, alpha_vantage, yfinance
             "macro_data": "fred",                # Options: fred (needs FRED_API_KEY)
             "prediction_markets": "polymarket",  # Options: polymarket (keyless)
         },

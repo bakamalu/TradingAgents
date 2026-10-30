@@ -231,6 +231,8 @@ TradingAgents works with any market Yahoo Finance covers, using the exchange-suf
 - China A-shares: Shanghai `.SS`, Shenzhen `.SZ` (e.g. `600519.SS` for Kweichow Moutai)
 - Crypto: `BTC-USD`, `ETH-USD`
 
+A-share listings get company news in Chinese. The news analyst reads 同花顺 7x24 快讯 (`news.10jqka.com.cn`), which needs no key: each item is matched by the listed codes it tags, and untagged market and sector wires are matched by the company's name. That vendor leads the default `news_data` chain and stands aside for every non-A-share symbol, so US, Hong Kong and crypto runs still read Yahoo Finance. The wire is live and recent-only — it keeps a few weeks — so an older window is reported as unavailable, not as an absence of news. To use Yahoo Finance for A-shares anyway, set `config["data_vendors"]["news_data"] = "yfinance"`.
+
 <p align="center">
   <img src="assets/cli/cli_init.png" width="100%" style="display: inline-block; margin: 0 2%;">
 </p>

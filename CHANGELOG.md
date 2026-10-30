@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 Changes that need action when upgrading are listed under "Upgrading from" in their release.
 
+## [Unreleased]
+
+### Added
+
+- A-share listings read company news in Chinese from 同花顺 7x24 快讯 (keyless). Items are matched by the listed codes the wire tags and, when untagged, by the company name; the vendor leads the default `news_data` chain and stands aside for other symbols, which still fall through to Yahoo Finance. A window the wire cannot reach is reported as unavailable rather than as no news.
+
 ## [0.7.1] — 2026-10-27
 
 Decisions are scored only on final closes and settle across long market holidays, a model's unpadded date no longer reads filings made after the run date, and fixes to portfolios, prices, SEC statements, reports, Azure and Claude settings.
